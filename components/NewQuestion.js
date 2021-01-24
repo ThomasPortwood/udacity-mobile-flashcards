@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { View, StyleSheet } from 'react-native'
 import { addCardToDeck } from '../utils/storage'
 import { Button, Input } from 'react-native-elements'
+import { screens } from '../utils/screens'
 
 const styles = StyleSheet.create({
   view: {
@@ -26,7 +27,7 @@ export default function NewQuestion({ route, navigation }) {
   const [answer, setAnswer] = useState('')
 
   const onSubmit = () => {
-    addCardToDeck(deck.title, { question, answer }).then(() => navigation.navigate('Decks'))
+    addCardToDeck(deck.title, { question, answer }).then(() => navigation.navigate(screens.individualDeck, { deck }))
   }
 
   return (

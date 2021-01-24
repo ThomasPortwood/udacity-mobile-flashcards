@@ -59,7 +59,7 @@ export default function Quiz({ route, navigation }) {
         />
         <Button
           title='Home'
-          onPress={() => navigation.navigate(screens.decks)}
+          onPress={() => navigation.navigate(screens.individualDeck, { title: deck.title })}
         />
       </View>
     )

@@ -49,16 +49,15 @@ export async function getDeck(id) {
   }
 }
 
-export async function saveDeckTitle(title) {
+export async function saveDeck(deck) {
   try {
-    const toMerge = JSON.stringify({ [title]: { title, questions: [] } })
+    const toMerge = JSON.stringify({ [deck.title]: deck })
     const merged = await AsyncStorage.mergeItem(STORAGE_KEY, toMerge)
     return JSON.parse(merged)
   }
   catch (e) {
     console.warn('Error saving new deck', e)
   }
-
 }
 
 export async function addCardToDeck(title, card) {

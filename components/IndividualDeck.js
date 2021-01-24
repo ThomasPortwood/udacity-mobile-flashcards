@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { View, StyleSheet } from 'react-native'
 import { Button, Text } from 'react-native-elements'
 import { screens } from '../utils/screens'
-import { removeDeck } from '../utils/storage'
+import { getDeck, removeDeck } from '../utils/storage'
 
 const styles = StyleSheet.create({
   view: {
@@ -14,7 +14,10 @@ const styles = StyleSheet.create({
 
 export default function IndividualDeck({ route, navigation }) {
 
-  const { deck } = route.params
+  const { title } = route.params
+  const [deck, setDeck] = useState()
+
+  useEffect(() => { getDeck(title).then(setDeck) })
 
   if (!deck)
     return <></>

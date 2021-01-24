@@ -36,7 +36,7 @@ export default function Decks({ navigation }) {
           Object.entries(decks).map(([title, deck]) => (
             <TouchableOpacity
               key={title}
-              onPress={() => navigation.navigate(screens.individualDeck, { deck })}
+              onPress={() => navigation.navigate(screens.individualDeck, { title: deck.title })}
             >
               <Card>
                 <Card.Title h3>{title}</Card.Title>

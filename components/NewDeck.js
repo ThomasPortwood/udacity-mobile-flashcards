@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { View, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
-import { saveDeckTitle } from '../utils/storage'
+import { saveDeck } from '../utils/storage'
 import { Button, Text, Input } from 'react-native-elements'
+import { screens } from '../utils/screens'
 
 const styles = StyleSheet.create({
   view: {
@@ -19,7 +20,8 @@ export default function NewDeck({ navigation }) {
   const [title, setTitle] = useState()
 
   const onSubmit = () => {
-    saveDeckTitle(title).then(() => navigation.navigate('Decks'))
+    const deck = { title, questions: [] }
+    saveDeck(deck).then(() => navigation.navigate(screens.individualDeck, { title }))
   }
 
   return (

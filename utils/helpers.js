@@ -2,7 +2,8 @@ import {
   getPermissionsAsync,
   cancelAllScheduledNotificationsAsync,
   setNotificationHandler,
-  scheduleNotificationAsync
+  scheduleNotificationAsync,
+  requestPermissionsAsync
 } from 'expo-notifications'
 
 export async function getNotificationPermission() {
@@ -12,7 +13,7 @@ export async function getNotificationPermission() {
   if (permission.status === 'granted')
     return
 
-  await Permissions.askAsync(Permissions.NOTIFICATIONS)
+  await requestPermissionsAsync()
 
 }
 
