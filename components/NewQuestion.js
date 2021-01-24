@@ -27,7 +27,8 @@ export default function NewQuestion({ route, navigation }) {
   const [answer, setAnswer] = useState('')
 
   const onSubmit = () => {
-    addCardToDeck(deck.title, { question, answer }).then(() => navigation.navigate(screens.individualDeck, { deck }))
+    addCardToDeck(deck.title, { question, answer })
+      .then(() => navigation.navigate(screens.individualDeck, { title: deck.title }))
   }
 
   return (
